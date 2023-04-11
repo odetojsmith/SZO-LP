@@ -8,5 +8,5 @@ Regarding the datails, we refer the readers to https://arxiv.org/abs/2304.01797 
 ## To run this code
 One need to load matpower in code/packages/matpower7.1 (If there is a new matpower version, please also rename the filefolder.)
 The benchmark case is pglib_opf_case30_as.m, copied from "A Library of IEEE PES Power Grid Benchmarks", https://github.com/power-grid-lib/pglib-opf.
-Then run the code in SZO-LP/code/SZO-LP/SZO_LP_OPF.m
+Then run the code in SZO-LP/code/SZO-LP/SZO_LP_OPF.m By doing this, one can derive a stationary point of the OPF problem.
 
