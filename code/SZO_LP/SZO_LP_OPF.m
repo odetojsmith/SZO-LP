@@ -1,7 +1,8 @@
-%%
+
 clear; clc; close all
 profile on;
 
+%% Specification of the OPF problem
 M = 0.5;     % Smoothness
 nu = 0.001;  % Fixed step length for gradient approximation
 mu = 0.0001;  % Quadratic penalty coeff
@@ -79,7 +80,6 @@ param.pvnumber = length(PV_bus);
 
 
 
-%% Compute the optimizer
 x = [x_p';x_v'];
 x_progress = 1;
 y_progress = 1;
@@ -106,6 +106,8 @@ ops = sdpsettings('verbose',0,'debug',1);
 icon_first = 0;
 icon_term = 1;
 t=1;
+
+%% Main algorithm SZO-LP
 
 tic
 while (norm(y_progress)>th_convergence) 
@@ -295,6 +297,7 @@ function [x_dir,epsilon] = sub_LP(data,epsilon,param)
 end
 
 function data  = data_update(x,param)
+    % data is an essential structure where data.metric_value_funcs contains the objective and constraint function values and each column of data.grad_funcs corresponds to the gradient of an objective function or a constraint function
     global nu;
     data.metric_value_funcs = func_realization(x,param);
     grad_funcs = [];
